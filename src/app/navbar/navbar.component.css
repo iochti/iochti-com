@@ -1,0 +1,19 @@
+.nav {
+  background-color: #4348bd;
+  color: white;
+}
+
+.container .nav-item {
+  color: white;
+}
+
+.container .nav-item:hover {
+  border-bottom-color: #03a9f4;
+  color: #03a9f4;
+}
+
+.container .nav-item.is-tab.is-active {
+  border-bottom: 3px solid #03a9f4;
+  color: #f6f6f6;
+  padding-bottom: calc(.75rem - 3px);
+}

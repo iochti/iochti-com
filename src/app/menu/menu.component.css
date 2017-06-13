@@ -1,0 +1,7 @@
+.menu-list a.is-active   {
+  background-color: #4348bd;
+}
+
+.menu-list a:hover {
+  color: #03a9f4;
+}
