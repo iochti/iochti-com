@@ -1,0 +1,9 @@
+<h1 class="title">Thing groups</h1>
+
+<div
+ class="columns is-multiline is-mobile"
+ *ngIf="!groupsFetching; else elseBlock"
+>
+ <iochti-group *ngFor="let group of groups" [group]="group" class="column is-half"></iochti-group>
+</div>
+<ng-template #elseBlock>Loading</ng-template>

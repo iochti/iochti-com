@@ -27,6 +27,7 @@ export class AccountService {
           return resValue as AccountURL
         }
         this.loggedUser = resValue as Account;
+        localStorage.setItem("userid", this.loggedUser.id);
         return { connection_url: "" } as AccountURL;
       })
       .catch(this.handleError)
@@ -41,6 +42,7 @@ export class AccountService {
       .toPromise()
       .then(response => {
         this.loggedUser = response.json() as Account;
+        localStorage.setItem("userid", this.loggedUser.id);
         return this.loggedUser;
       })
       .catch(this.handleError)

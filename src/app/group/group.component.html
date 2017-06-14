@@ -1,0 +1,19 @@
+<div class="card">
+  <header class="card-header">
+    <p class="card-header-title">
+      {{group.name}}
+    </p>
+    <a class="card-header-icon">
+      <span class="icon">
+        <i class="fa fa-angle-down"></i>
+      </span>
+    </a>
+  </header>
+  <div class="card-content">
+    <div class="content">
+      {{group.description}}
+      <br/>
+      <small>Last updated: {{group.updatedAt | date:'medium'}}</small>
+    </div>
+  </div>
+</div>

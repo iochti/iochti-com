@@ -10,11 +10,23 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { MenuComponent } from './menu/menu.component';
+import { ThingsComponent } from './things/things.component';
+import { GroupsComponent } from './groups/groups.component';
+import { GroupComponent } from './group/group.component';
+
 import { AccountService } from './account/account.service';
+import { GroupService } from './groups/group.service';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'dashboard', component: DashboardComponent, data: {account: new(Account)}},
+  { path: 'dashboard',
+    component: DashboardComponent,
+    data: {account: new(Account)},
+    children: [
+      { path: 'things', component: ThingsComponent },
+      { path: 'groups', component: GroupsComponent }
+    ]
+  },
 ];
 
 @NgModule({
@@ -24,6 +36,9 @@ const appRoutes: Routes = [
     HomeComponent,
     DashboardComponent,
     MenuComponent,
+    ThingsComponent,
+    GroupsComponent,
+    GroupComponent,
   ],
   imports: [
     BrowserModule,
@@ -34,6 +49,7 @@ const appRoutes: Routes = [
   ],
   providers: [
     AccountService,
+    GroupService,
   ],
   bootstrap: [AppComponent]
 })
