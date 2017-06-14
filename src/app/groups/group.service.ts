@@ -6,19 +6,26 @@ import 'rxjs/add/operator/toPromise';
 @Injectable()
 export class GroupService {
   private URL = "http://127.0.0.1:4141/group"
+  groups: Group[]
   constructor(private _http: Http) {}
 
   getGroups(userId: string): Promise<Group[]> {
     return this._http.get(this.URL+`?accountid=${userId}`)
       .toPromise()
-      .then(res => res.json() as Group[])
+      .then(res => {
+        this.groups = res.json();
+        return res.json() as Group[]
+      })
       .catch(this.handleError);
   }
 
   createGroup(group: Group): Promise<Group> {
     return this._http.post(this.URL, group)
       .toPromise()
-      .then(res => res.json() as Group)
+      .then(res =>{
+        this.groups.push(res.json());
+        return res.json() as Group;
+      })
       .catch(this.handleError)
   }
 

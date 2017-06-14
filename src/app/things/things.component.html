@@ -1,1 +1,33 @@
-<h1>Hello World</h1>
+<h1 class="title">Thing groups</h1>
+<div
+ class="columns is-multiline is-mobile"
+ *ngIf="!thingFetching; else elseBlock"
+>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>MAC</th>
+        <th>Group</th>
+        <th>Created</th>
+        <th>actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let thing of things">
+        <td>{{thing.name}}</td>
+        <td>{{thing.mac}}</td>
+        <td>{{thing.groupId}}</td>
+        <td>{{thing.createdAt}}</td>
+        <td>
+          <a class="button is-small is-primary">
+            <span class="icon is-small">
+              <i class="fa fa-area-chart"></i>
+            </span>
+          </a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<ng-template #elseBlock>Loading</ng-template>

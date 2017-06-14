@@ -1,5 +1,5 @@
 // Thing element
-class Thing {
+export class Thing {
   id: string;
   groupId: string;
   name: string;

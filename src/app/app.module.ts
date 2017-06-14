@@ -16,6 +16,7 @@ import { GroupComponent } from './group/group.component';
 
 import { AccountService } from './account/account.service';
 import { GroupService } from './groups/group.service';
+import { ThingService } from './things/thing.service';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -50,6 +51,7 @@ const appRoutes: Routes = [
   providers: [
     AccountService,
     GroupService,
+    ThingService,
   ],
   bootstrap: [AppComponent]
 })
