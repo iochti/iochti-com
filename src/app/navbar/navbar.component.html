@@ -2,9 +2,8 @@
   <div class="container">
     <div class="nav-left">
       <a class="nav-item">
-        <img src="assets/images/logo_full.png" height="50px" alt="Iochti logo">
+        <img src="assets/images/logo_full.png" alt="Iochti logo">
       </a>
-      <a class="nav-item is-tab is-hidden-mobile is-active">Home</a>
     </div>
     <span class="nav-toggle">
       <span></span>
@@ -12,8 +11,14 @@
       <span></span>
     </span>
     <div class="nav-right nav-menu">
+      <a class="nav-item is-tab">
+        <figure class="image is-32x32" style="margin-right: 8px;">
+          <img [src]="account.avatar_url">
+        </figure>
+        Profile
+      </a>
       <a class="nav-item is-tab is-hidden-tablet is-active">Home</a>
-      <a class="nav-item is-tab">Log In</a>
+      <a class="nav-item is-tab">Log Out</a>
     </div>
   </div>
 </nav>
