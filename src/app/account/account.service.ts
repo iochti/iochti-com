@@ -12,7 +12,7 @@ export class AccountService {
   loggedUser: Account
   private loginUrl = "http://127.0.0.1:4141/login"
   private authUrl = "http://127.0.0.1:4141/auth"
-
+  private accountUrl = "http://127.0.0.1:4141/user"
   constructor(private http: Http) {}
 
   getLoginUrl(): Promise<any> {
@@ -46,6 +46,15 @@ export class AccountService {
         return this.loggedUser;
       })
       .catch(this.handleError)
+  }
+
+  getAccount(id: string): Promise<Account> {
+    return this.http.get(this.accountUrl+`?categ=id&value=${id}`)
+      .toPromise()
+      .then(res => {
+        this.loggedUser = res.json() as Account;
+        return this.loggedUser;
+      })
   }
 
   private handleError(error: any): Promise<any> {

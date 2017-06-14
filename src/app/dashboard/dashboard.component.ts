@@ -9,7 +9,8 @@ import { Account } from '../account/account';
 export class DashboardComponent {
   private code: string;
   private state: string;
-  private account: Account;
+  private account: Account = new(Account);
+  private errorMessage: string;
 
   constructor(
     private route: ActivatedRoute,
@@ -23,18 +24,28 @@ export class DashboardComponent {
         this.code = params["code"];
         this.state = params["state"];
       });
-      if(!this.accountSvc.loggedUser) {
+      if(!this.accountSvc.loggedUser && this.code && this.state) {
         this.authUser()
+      } else if(!this.accountSvc.loggedUser && !this.code  && !this.state){
+        this.getUser();
       } else {
         this.account = this.accountSvc.loggedUser;
       }
+  }
+
+  getUser() {
+    const userId = localStorage.getItem("userid");
+    this.accountSvc.getAccount(userId)
+      .then(account => this.account = account)
+      .catch(err => this.errorMessage);
   }
 
   authUser() {
     if(this.code !== "" && this.state !== ""){
       this.accountSvc
         .getAuth(this.code, this.state)
-        .then(account => this.account = account);
+        .then(account => this.account = account)
+        .catch(err => this.errorMessage = err);
     }
   }
 };

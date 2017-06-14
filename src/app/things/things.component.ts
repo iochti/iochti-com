@@ -21,7 +21,7 @@ export class ThingsComponent implements OnInit {
 
   ngOnInit() {
     this.thingFetching = true;
-    this.getThingList();
+    this._group.getGroups(localStorage.getItem("userid")).then(() => this.getThingList())
   }
 
   getThingList() {
@@ -32,7 +32,7 @@ export class ThingsComponent implements OnInit {
           this.things = unionBy(this.things, things, 'id')
         })
         .catch(err => this.errorMessage = err)
-      this.thingFetching = false;  
+      this.thingFetching = false;
     })
   }
 }
