@@ -12,6 +12,7 @@ export class GroupsComponent implements OnInit {
   private groups: Group[];
   private groupsFetching: boolean;
   private errorMessage: string;
+  private isModalOpen: boolean;
 
   constructor(
     private _group: GroupService,
@@ -19,6 +20,7 @@ export class GroupsComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.isModalOpen = false;
     this.groupsFetching = true;
     this.listGroups()
   }
@@ -31,5 +33,10 @@ export class GroupsComponent implements OnInit {
         this.groupsFetching = false;
       })
       .catch(err => this.errorMessage = err);
+  }
+
+  handleOpenModal() {
+    this.isModalOpen = !this.isModalOpen
+    console.log(this.isModalOpen);
   }
 }

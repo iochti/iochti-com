@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpModule, JsonpModule } from '@angular/http';
+import { FormsModule }   from '@angular/forms';
 import { CookieModule } from 'ngx-cookie';
 
 import { AppComponent } from './app.component';
@@ -13,6 +14,8 @@ import { MenuComponent } from './menu/menu.component';
 import { ThingsComponent } from './things/things.component';
 import { GroupsComponent } from './groups/groups.component';
 import { GroupComponent } from './group/group.component';
+import { ModalGroupComponent} from './modal-group/modal-group.component';
+import { TempGraphComponent } from './temp-graph/temp-graph.component';
 
 import { AccountService } from './account/account.service';
 import { GroupService } from './groups/group.service';
@@ -22,7 +25,7 @@ const appRoutes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'dashboard',
     component: DashboardComponent,
-    data: {account: new(Account)},
+    data: {account: {}},
     children: [
       { path: 'things', component: ThingsComponent },
       { path: 'groups', component: GroupsComponent }
@@ -33,6 +36,7 @@ const appRoutes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
+    ModalGroupComponent,
     NavbarComponent,
     HomeComponent,
     DashboardComponent,
@@ -40,11 +44,13 @@ const appRoutes: Routes = [
     ThingsComponent,
     GroupsComponent,
     GroupComponent,
+    TempGraphComponent,
   ],
   imports: [
     BrowserModule,
     HttpModule,
     JsonpModule,
+    FormsModule,
     RouterModule.forRoot(appRoutes),
     CookieModule.forRoot(),
   ],

@@ -20,7 +20,9 @@ export class GroupService {
   }
 
   createGroup(group: Group): Promise<Group> {
-    return this._http.post(this.URL, group)
+    let headers = new Headers()
+    headers.append('Content-Type', 'text/plain');
+    return this._http.post(this.URL, group, {headers: headers})
       .toPromise()
       .then(res =>{
         this.groups.push(res.json());
